@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.17'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.spring'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '11'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.2.0'
+    implementation group: 'org.mybatis', name: 'mybatis-typehandlers-jsr310', version: '1.0.2'
+    implementation group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.6'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    //lombok 관련
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.22' // 테스트 의존성 추가
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22' // 테스트 의존성 추가
+
+    //스프링 시큐리티 관련 (로그인 구현 시 필요)
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+    //로그
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.9'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
