@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.selfstudy.mapper.UserMapper">
+    <select id="getUserAccount" resultType="com.spring.selfstudy.web.vo.UserVo">
+        SELECT * FROM tb_user
+        WHERE USER_ID= #{userId}
+    </select>
+
+    <insert id="saveUser" parameterType="com.spring.selfstudy.web.vo.UserVo">
+        INSERT INTO TB_USER
+            (USER_ID, USER_PW, USER_NAME, USER_AUTH, CREATED_AT, UPDATED_AT)
+        VALUES(#{userId},#{userPw},#{userName},#{userAuth},#{createdAt},#{updatedAt});
+    </insert>
+</mapper>

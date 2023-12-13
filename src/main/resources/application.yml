@@ -1,0 +1,13 @@
+spring:
+  # 접속 DB 설정
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_self
+    username: "****"
+    password: "****"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  # mapper 경로 지정
+  mapper-locations: query/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
